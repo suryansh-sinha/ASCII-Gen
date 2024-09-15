@@ -3,10 +3,10 @@ from PIL import Image
 from ascii_art import process_image_to_ascii
 import os
 
-st.title("Image to ASCII Art Converter")
+st.title("VisualGlyph: Convert Images to ASCII Art!")
 
 # Upload an image file
-uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
+uploaded_file = st.file_uploader("Upload an image...", type=["jpg", "jpeg", "png"])
 
 # User input for scale factor, font size, and background color
 scale_factor = st.slider("Scale Factor", min_value=0.1, max_value=2.0, value=1.0, step=0.1)
@@ -28,11 +28,11 @@ if uploaded_file is not None:
 
         process_image_to_ascii(input_path, output_path, scale_factor, bg_color_rgb, font_size)
         
-        st.image(output_path, caption="ASCII Art Image", use_column_width=True)
+        st.image(output_path, caption="Generated ASCII Art", use_column_width=True)
 
         with open(output_path, "rb") as file:
             st.download_button(
-                label="Download ASCII Art Image",
+                label="Download ASCII Art",
                 data=file,
                 file_name="ascii_art.png",
                 mime="image/png"
