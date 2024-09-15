@@ -32,7 +32,7 @@ def process_image_to_ascii(input_path, output_path, scale_factor, bg_color, font
     output_height = int(input_height * scale_factor / char_height)
 
     # Resize the input image to match the output character grid
-    im = im.resize((output_width, output_height), Image.BILINEAR)
+    im = im.resize((output_width, output_height), Image.Resampling.LANCZOS)
     pixels = im.load()
 
     # Prepare output image and drawing object
